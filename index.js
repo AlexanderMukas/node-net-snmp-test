@@ -1,20 +1,28 @@
 const snmp = require("net-snmp");
 const ping = require('ping');
 
-let swHosts = ["10.3.20.3", "10.3.20.4", "10.3.20.50", "10.3.20.51", "10.3.20.52"];
-const oids = ["1.3.6.1.2.1.1.1.0", "1.3.6.1.2.1.1.5.0"];
 
-swHosts.forEach( ip_switch => console.log(ip_switch));
+let swHosts20 = [];
 
-swHosts.forEach( host => {
+// add 10.3.20.xx subnet hosts
+for(let i=2; i < 255; i++){
+    swHosts20.push(`10.3.20.${i}`);
+}
+
+const swHosts20UP = [];
+
+swHosts20.forEach( host => {
     ping.sys.probe(host, isAlive => {
-        let msg = isAlive ? `host ${host} is alive` : `host ${host} is dead`;
-        console.log(msg);
-    })
-});
+        if(isAlive){
+            console.log(`host ${host} is UP`);
+            
+        }
+    });
 
-// let session = snmp.createSession(sw[0], "public");
- 
+const ip = "10.3.20.50";
+let session = snmp.createSession(ip, "public");
+
+const oids = ["1.3.6.1.2.1.1.1.0", "1.3.6.1.2.1.1.5.0"];
 
  
 // session.get(oids, function(error, varbinds) {
@@ -29,8 +37,7 @@ swHosts.forEach( host => {
 //     }
 //     session.close();
 // });
- 
-// session.trap(snmp.TrapType.LinkDown, function(error) {
-//     if(error)
-//         console.error(error);
+
+// session.trap(snmp.TrapType.LinkDown, (error) => {
+//     if(error) console.error(error);
 // });
