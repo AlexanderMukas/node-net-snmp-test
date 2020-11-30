@@ -1,0 +1,23 @@
+{
+  "name": "net_code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderMukas/node-net-snmp-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderMukas/node-net-snmp-test/issues"
+  },
+  "homepage": "https://github.com/AlexanderMukas/node-net-snmp-test#readme",
+  "dependencies": {
+    "net-snmp": "^2.9.8"
+  }
+}
