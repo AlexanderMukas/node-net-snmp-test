@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/AlexanderMukas/node-net-snmp-test#readme",
   "dependencies": {
-    "net-snmp": "^2.9.8"
+    "net-snmp": "^2.9.8",
+    "ping": "^0.3.0"
   }
 }
